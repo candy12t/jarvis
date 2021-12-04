@@ -1,0 +1,4 @@
+export ComsumerKey=xxxxxxxxxxxxxxxxxx
+export ComsumerSecret=xxxxxxxxxxxxxxxxxx
+export AccessToken=xxxxxxxxxxxxxxxxxx
+export AccessTokenSecret=xxxxxxxxxxxxxxxxxx
