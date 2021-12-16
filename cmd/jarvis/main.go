@@ -3,9 +3,9 @@ package main
 import (
 	"log"
 
-	"github.com/candy12t/n3m/internal/config"
-	"github.com/candy12t/n3m/internal/controller"
-	"github.com/candy12t/n3m/internal/twitter"
+	"github.com/candy12t/jarvis/internal/config"
+	"github.com/candy12t/jarvis/internal/controller"
+	"github.com/candy12t/jarvis/internal/twitter"
 )
 
 func main() {

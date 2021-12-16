@@ -4,8 +4,8 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/candy12t/n3m/internal/scraping"
-	"github.com/candy12t/n3m/internal/twitter"
+	"github.com/candy12t/jarvis/internal/scraping"
+	"github.com/candy12t/jarvis/internal/twitter"
 	"github.com/chromedp/chromedp"
 )
 

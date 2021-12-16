@@ -1,4 +1,4 @@
-module github.com/candy12t/n3m
+module github.com/candy12t/jarvis
 
 go 1.17
 
