@@ -1,0 +1,7 @@
+# -*- mode: yaml -*-
+# vi: set ft=yaml :
+
+consumer_key: INPUT_YOUR_CONSUMER_KEY
+consumer_secret: INPUT_YOUR_CONSUMER_SECRET
+access_token: INPUT_YOUR_ACCESS_TOKEN
+access_token_secret: INPUT_YOUR_ACCESS_TOKEN_SECRET

@@ -1,0 +1,8 @@
+# -*- mode: yaml -*-
+# vi: set ft=yaml :
+
+country: ja_JP
+services:
+  - nfx
+  - amp
+  - dnp
