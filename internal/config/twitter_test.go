@@ -6,6 +6,15 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
+func TestNewTwitter(t *testing.T) {
+	err := NewTwitter()
+	assert.NoError(t, err)
+	assert.Equal(t, "INPUT_YOUR_CONSUMER_KEY", TwitterConsumerKey())
+	assert.Equal(t, "INPUT_YOUR_CONSUMER_SECRET", TwitterConsumerSecret())
+	assert.Equal(t, "INPUT_YOUR_ACCESS_TOKEN", TwitterAccessToken())
+	assert.Equal(t, "INPUT_YOUR_ACCESS_TOKEN_SECRET", TwitterAccessTokenSecret())
+}
+
 func TestParseTwitterConfig(t *testing.T) {
 	data := `
 consumer_key: INPUT_YOUR_CONSUMER_KEY

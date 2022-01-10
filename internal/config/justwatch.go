@@ -7,14 +7,18 @@ import (
 )
 
 type Justwatch struct {
-	Country  string   `yaml:"country"`
-	Services []string `yaml:"services"`
+	Country   string   `yaml:"country"`
+	Providers []string `yaml:"providers"`
 }
 
 var justwachCfg *Justwatch
 
-func JustwatchCfg() *Justwatch {
-	return justwachCfg
+func JustwatchCountry() string {
+	return justwachCfg.Country
+}
+
+func JustwatchProviders() []string {
+	return justwachCfg.Providers
 }
 
 func NewJustwatch() error {

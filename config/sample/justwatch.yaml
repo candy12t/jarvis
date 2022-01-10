@@ -2,7 +2,7 @@
 # vi: set ft=yaml :
 
 country: ja_JP
-services:
+providers:
   - nfx
   - amp
   - dnp

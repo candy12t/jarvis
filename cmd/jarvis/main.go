@@ -12,11 +12,7 @@ import (
 
 func main() {
 	setup()
-	if strings.HasPrefix(os.Getenv("AWS_EXECUTION_ENV"), "AWS_Lambda") {
-		lambda.Start(Handler)
-	} else {
-		Handler()
-	}
+	run()
 }
 
 func setup() {
@@ -25,6 +21,14 @@ func setup() {
 	}
 	if err := config.NewJustwatch(); err != nil {
 		log.Fatal(err)
+	}
+}
+
+func run() {
+	if strings.HasPrefix(os.Getenv("AWS_EXECUTION_ENV"), "AWS_Lambda") {
+		lambda.Start(Handler)
+	} else {
+		Handler()
 	}
 }
 

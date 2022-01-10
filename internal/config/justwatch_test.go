@@ -6,17 +6,24 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
+func TestNewJustwatch(t *testing.T) {
+	err := NewJustwatch()
+	assert.NoError(t, err)
+	assert.Equal(t, "ja_JP", JustwatchCountry())
+	assert.Equal(t, []string{"nfx", "amp", "dnp"}, JustwatchProviders())
+}
+
 func TestParseJustwatchConfig(t *testing.T) {
 	data := `
-country: jp_JP
-services:
-  - netflix
-  - amazon-prime-video
-  - disney-plus
+country: ja_JP
+providers:
+  - nfx
+  - amp
+  - dnp
 `
 
 	cfg, err := ParseJustwatchConfig([]byte(data))
 	assert.NoError(t, err)
-	assert.Equal(t, "jp_JP", cfg.Country)
-	assert.Equal(t, []string{"netflix", "amazon-prime-video", "disney-plus"}, cfg.Services)
+	assert.Equal(t, "ja_JP", cfg.Country)
+	assert.Equal(t, []string{"nfx", "amp", "dnp"}, cfg.Providers)
 }

@@ -15,8 +15,20 @@ type Twitter struct {
 
 var twitterCfg *Twitter
 
-func TwitterCfg() *Twitter {
-	return twitterCfg
+func TwitterConsumerKey() string {
+	return twitterCfg.ConsumerKey
+}
+
+func TwitterConsumerSecret() string {
+	return twitterCfg.ConsumerSecret
+}
+
+func TwitterAccessToken() string {
+	return twitterCfg.AccessToken
+}
+
+func TwitterAccessTokenSecret() string {
+	return twitterCfg.AccessTokenSecret
 }
 
 func NewTwitter() error {

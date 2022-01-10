@@ -2,7 +2,6 @@ package config
 
 import (
 	"io/ioutil"
-	"log"
 
 	_ "github.com/candy12t/jarvis/internal/statik"
 	"github.com/rakyll/statik/fs"
@@ -11,10 +10,9 @@ import (
 func ReadFile(filename string) ([]byte, error) {
 	statikFS, err := fs.New()
 	if err != nil {
-		log.Fatal(err)
+		return nil, err
 	}
 
-	// Access individual files by their paths.
 	r, err := statikFS.Open(filename)
 	if err != nil {
 		return nil, err
