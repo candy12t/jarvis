@@ -4,6 +4,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"log"
 )
 
 type Contents struct {
@@ -109,9 +110,11 @@ func (c *Client) listContents(ctx context.Context, endpoint string, opts *Conten
 	}
 
 	contents := new(Contents)
-	if _, err := c.Do(req, contents); err != nil {
+	resp, err := c.Do(req, contents)
+	if err != nil {
 		return nil, err
 	}
+	log.Printf("request url: %s\n", resp.Request.URL.String())
 
 	return contents, nil
 }
