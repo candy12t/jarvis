@@ -5,9 +5,9 @@ import (
 
 	"github.com/candy12t/jarvis/internal/config"
 	"github.com/candy12t/jarvis/internal/fetcher"
-	"github.com/candy12t/jarvis/internal/model/fetcher/justwatch"
-	"github.com/candy12t/jarvis/internal/model/notifier/twitter"
+	"github.com/candy12t/jarvis/internal/fetcher/justwatch"
 	"github.com/candy12t/jarvis/internal/notifier"
+	"github.com/candy12t/jarvis/internal/notifier/twitter"
 )
 
 const dateFormat = "2006-01-02"
