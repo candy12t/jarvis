@@ -83,7 +83,8 @@ type ContentBodyOptions struct {
 }
 
 type ContentOptions struct {
-	Body string `url:"body"`
+	Body               string `url:"body"`
+	FilterPriceChanges bool   `url:"filter_price_changes"`
 }
 
 func (c *Client) ListNewContens(ctx context.Context, opts *ContentBodyOptions) (*Contents, error) {
@@ -122,7 +123,8 @@ func buildQuery(opts *ContentBodyOptions) (*ContentOptions, error) {
 	}
 
 	contentOpts := &ContentOptions{
-		Body: string(body),
+		Body:               string(body),
+		FilterPriceChanges: false,
 	}
 	return contentOpts, nil
 }
