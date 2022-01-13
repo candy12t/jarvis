@@ -7,6 +7,18 @@ import (
 	"github.com/rakyll/statik/fs"
 )
 
+func Setup() error {
+	if err := NewTwitter(); err != nil {
+		return err
+	}
+
+	if err := NewJustwatch(); err != nil {
+		return err
+	}
+
+	return nil
+}
+
 func ReadFile(filename string) ([]byte, error) {
 	statikFS, err := fs.New()
 	if err != nil {

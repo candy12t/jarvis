@@ -1,14 +1,10 @@
 OBJ = ./bin/jarvis
 
-all: clean build
+all: clean debug
 
-.PHONY: build
-build: statik
-	go build -o $(OBJ) -v ./cmd/jarvis
-
-.PHONY: run
-run: build
-	$(OBJ)
+.PHONY: debug
+debug: clean statik
+	go build -tags debug -o $(OBJ) -v ./cmd/jarvis
 
 .PHONY: lambda
 lambda: clean statik

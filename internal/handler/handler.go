@@ -7,7 +7,6 @@ import (
 	"github.com/candy12t/jarvis/internal/fetcher"
 	"github.com/candy12t/jarvis/internal/fetcher/justwatch"
 	"github.com/candy12t/jarvis/internal/notifier"
-	"github.com/candy12t/jarvis/internal/notifier/twitter"
 )
 
 const dateFormat = "2006-01-02"
@@ -23,10 +22,7 @@ func Apply() error {
 		return err
 	}
 
-	twitterAuth := twitter.NewAuthenticator(config.TwitterConsumerKey(), config.TwitterConsumerSecret(), config.TwitterAccessToken(), config.TwitterAccessTokenSecret())
-	notifierClient := twitter.NewClient(twitterAuth)
-	// notifierClient := dumynotifier.NewClient()
-	_notifier := notifier.NewClient(notifierClient, timeNow)
+	_notifier := notifier.NewClient(NotifyClient(), timeNow)
 
 	return _notifier.Notify(contents)
 }
