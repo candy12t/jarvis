@@ -21,8 +21,10 @@ statik:
 
 .PHONY: test
 test:
+	ls config/sample/*.yaml.sample | sed 's/\.sample//' | xargs -I{} cp {}.sample {}
 	statik -f -dest=./internal -src=./config/sample -include=\*.yaml
 	go test ./... -count=1
+	rm -rf config/sample/*.yaml
 
 .PHONY: clean
 clean:
