@@ -1,6 +1,6 @@
 /config/**/*.yaml
 /bin
 /tmp
-/dist/*
-!/dist/.keep
 /internal/statik
+/.aws-sam
+.envrc

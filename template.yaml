@@ -1,0 +1,39 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: >
+  jarvis
+
+  Sample SAM Template for jarvis
+
+# More info about Globals: https://github.com/awslabs/serverless-application-model/blob/master/docs/globals.rst
+Globals:
+  Function:
+    Runtime: go1.x
+    MemorySize: 512
+    Timeout: 60
+
+Resources:
+  JarvisFunction:
+    Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
+    Properties:
+      Architectures:
+        - x86_64
+      CodeUri: ./
+      Description: notify new contents delivered by streaming services
+      Events:
+        CloudWatchEvent:
+          Type: Schedule
+          Properties:
+            Description: Exec `JarvisFunction` at 18 o'clock everyday.
+            Enabled: true
+            Name: exec-jarvis-18-oclock-everyday
+            Schedule: cron(0 9 * * ? *)
+      FunctionName: Jarvis
+      Handler: jarvis
+      MemorySize: 128
+      PackageType: Zip
+      Runtime: go1.x
+      Timeout: 120
+      Tracing: Active # https://docs.aws.amazon.com/lambda/latest/dg/lambda-x-ray.html
+    Metadata:
+      BuildMethod: makefile
