@@ -15,22 +15,6 @@ type Twitter struct {
 
 var twitterCfg *Twitter
 
-func TwitterConsumerKey() string {
-	return twitterCfg.ConsumerKey
-}
-
-func TwitterConsumerSecret() string {
-	return twitterCfg.ConsumerSecret
-}
-
-func TwitterAccessToken() string {
-	return twitterCfg.AccessToken
-}
-
-func TwitterAccessTokenSecret() string {
-	return twitterCfg.AccessTokenSecret
-}
-
 func NewTwitter() error {
 	data, err := ReadFile(filepath.Join("/", "twitter.yaml"))
 	if err != nil {
@@ -50,4 +34,20 @@ func ParseTwitterConfig(data []byte) (*Twitter, error) {
 		return nil, err
 	}
 	return t, nil
+}
+
+func TwitterConsumerKey() string {
+	return twitterCfg.ConsumerKey
+}
+
+func TwitterConsumerSecret() string {
+	return twitterCfg.ConsumerSecret
+}
+
+func TwitterAccessToken() string {
+	return twitterCfg.AccessToken
+}
+
+func TwitterAccessTokenSecret() string {
+	return twitterCfg.AccessTokenSecret
 }

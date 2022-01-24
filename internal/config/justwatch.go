@@ -13,14 +13,6 @@ type Justwatch struct {
 
 var justwachCfg *Justwatch
 
-func JustwatchCountry() string {
-	return justwachCfg.Country
-}
-
-func JustwatchProviders() []string {
-	return justwachCfg.Providers
-}
-
 func NewJustwatch() error {
 	data, err := ReadFile(filepath.Join("/", "justwatch.yaml"))
 	if err != nil {
@@ -41,4 +33,12 @@ func ParseJustwatchConfig(data []byte) (*Justwatch, error) {
 		return nil, err
 	}
 	return jw, nil
+}
+
+func JustwatchCountry() string {
+	return justwachCfg.Country
+}
+
+func JustwatchProviders() []string {
+	return justwachCfg.Providers
 }
