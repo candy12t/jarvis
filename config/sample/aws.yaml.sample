@@ -1,0 +1,8 @@
+# -*- mode: yaml -*-
+# vi: set ft=yaml :
+
+access_key_id: INPUT_YOUR_ACCESS_KEY_ID
+secret_access_key: INPUT_YOUR_SECRET_ACCESS_KEY
+region: INPUT_YOUR_REGION
+s3:
+  bucket: INPUT_YOUR_S3_BUCKET

@@ -16,6 +16,10 @@ func Setup() error {
 		return err
 	}
 
+	if err := NewAWS(); err != nil {
+		return err
+	}
+
 	return nil
 }
 
