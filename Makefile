@@ -2,7 +2,7 @@ EXEC = ./bin/jarvis
 
 .PHONY: install
 install:
-	go mod tidy
+	go mod download
 	go install github.com/rakyll/statik
 
 .PHONY: debug
