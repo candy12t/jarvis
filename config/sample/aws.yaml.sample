@@ -6,3 +6,4 @@ secret_access_key: INPUT_YOUR_SECRET_ACCESS_KEY
 region: INPUT_YOUR_REGION
 s3:
   bucket: INPUT_YOUR_S3_BUCKET
+  key: INPUT_YOUR_S3_KEY

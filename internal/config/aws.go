@@ -15,6 +15,7 @@ type AWSConfig struct {
 
 type S3Config struct {
 	Bucket string `yaml:"bucket"`
+	Key    string `yaml:"key"`
 }
 
 var awsCfg *AWSConfig
@@ -55,4 +56,8 @@ func AWSRegion() string {
 
 func AWSS3Bucket() string {
 	return awsCfg.S3.Bucket
+}
+
+func AWSS3Key() string {
+	return awsCfg.S3.Key
 }
