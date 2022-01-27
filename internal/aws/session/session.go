@@ -4,16 +4,20 @@ import (
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/aws/credentials"
 	"github.com/aws/aws-sdk-go/aws/session"
+	"github.com/candy12t/jarvis/internal/config"
 )
 
 var chachedSession *session.Session
 
-func NewSession(access_key_id, secret_access_key, region string) *session.Session {
+func NewSession() *session.Session {
+	if chachedSession != nil {
+		return chachedSession
+	}
 	sess := session.Must(
 		session.NewSession(
 			&aws.Config{
-				Credentials: credentials.NewStaticCredentials(access_key_id, secret_access_key, ""),
-				Region:      aws.String(region),
+				Credentials: credentials.NewStaticCredentials(config.AWSAccessKeyId(), config.AWSSecretAccessKey(), ""),
+				Region:      aws.String(config.AWSRegion()),
 			},
 		),
 	)

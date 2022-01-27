@@ -4,9 +4,9 @@ import (
 	"io"
 
 	"github.com/aws/aws-sdk-go/aws"
-	"github.com/aws/aws-sdk-go/aws/session"
 	"github.com/aws/aws-sdk-go/service/s3"
 	"github.com/aws/aws-sdk-go/service/s3/s3manager"
+	"github.com/candy12t/jarvis/internal/aws/session"
 )
 
 type S3Service struct {
@@ -16,12 +16,12 @@ type S3Service struct {
 	downloader *s3manager.Downloader
 }
 
-func NewS3Service(sess *session.Session, bucket, key string) *S3Service {
+func NewS3Service(bucket, key string) *S3Service {
 	return &S3Service{
 		Bucket:     bucket,
 		Key:        key,
-		uploader:   s3manager.NewUploader(sess),
-		downloader: s3manager.NewDownloader(sess),
+		uploader:   s3manager.NewUploader(session.NewSession()),
+		downloader: s3manager.NewDownloader(session.NewSession()),
 	}
 }
 
