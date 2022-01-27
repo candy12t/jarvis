@@ -21,7 +21,7 @@ func NewClient(notifier Notifier, date string) *Notice {
 
 func (n *Notice) Notify(contents model.Contents) error {
 	if contents == nil {
-		return n.NotifyNoContents()
+		return nil
 	}
 	return n.NotifyContents(contents)
 }

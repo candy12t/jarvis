@@ -1,7 +1,7 @@
 package model
 
-type FetchResult struct {
-	Contents Contents `json:"contents"`
+type WrappedContents struct {
+	Contents Contents `json:"contents,omitempty"`
 }
 
 type Contents []Content
