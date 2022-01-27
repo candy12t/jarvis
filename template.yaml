@@ -5,13 +5,6 @@ Description: >
 
   Sample SAM Template for jarvis
 
-# More info about Globals: https://github.com/awslabs/serverless-application-model/blob/master/docs/globals.rst
-Globals:
-  Function:
-    Runtime: go1.x
-    MemorySize: 512
-    Timeout: 60
-
 Resources:
   JarvisFunction:
     Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
@@ -24,16 +17,42 @@ Resources:
         CloudWatchEvent:
           Type: Schedule
           Properties:
-            Description: Exec `JarvisFunction` at 18 o'clock everyday.
+            Description: Exec JarvisFunction every hour everyday.
             Enabled: true
-            Name: exec-jarvis-18-oclock-everyday
-            Schedule: cron(0 9 * * ? *)
+            Name: exec-jarvis-every-hour-everyday
+            Schedule: cron(30 * * * ? *)
       FunctionName: Jarvis
       Handler: jarvis
-      MemorySize: 128
+      MemorySize: 256
       PackageType: Zip
       Runtime: go1.x
-      Timeout: 120
+      Timeout: 180
       Tracing: Active # https://docs.aws.amazon.com/lambda/latest/dg/lambda-x-ray.html
     Metadata:
       BuildMethod: makefile
+
+  JarvisErrorAlarm:
+    Type: AWS::CloudWatch::Alarm
+    Properties:
+      AlarmActions:
+        - Ref: JarivsSNSTopic
+      AlarmDescription: Monitor Jarvis of lambda function.
+      AlarmName: jarvis-alarm
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      Dimensions:
+        - Name: FunctionName
+          Value: !Ref JarvisFunction
+      EvaluationPeriods: 1
+      MetricName: Errors
+      Namespace: AWS/Lambda
+      Period: 3600
+      Statistic: Sum
+      Threshold: 1
+
+  JarivsSNSTopic:
+    Type: AWS::SNS::Topic
+    Properties:
+      Subscription:
+        - Endpoint: candy12t+aws_jarivs_alarm@gmail.com
+          Protocol: email
+      TopicName: JarivsAlertSNS
