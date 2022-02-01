@@ -17,7 +17,7 @@ import (
 const dateFormat = "2006-01-02"
 
 func Apply() error {
-	timeNow := time.Now().Format(dateFormat)
+	timeNow := time.Now().UTC().Format(dateFormat)
 
 	// create s3 client
 	s3Client := s3.NewS3Service(config.AWSS3Bucket(), config.AWSS3Key())
